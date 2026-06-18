@@ -12,6 +12,8 @@ build/
 .env.test.local
 .env.production.local
 
+!client/.env
+
 # Logs
 logs
 *.log
