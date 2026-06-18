@@ -7,33 +7,35 @@ import Testimonials from "../components/Testimonials";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 import WhyChooseUs from "../components/WhyChooseUs";
+import ScrollReveal from "../components/ScrollReveal";
 
 const Home = () => {
   return (
     <>
       <Navbar />
-      <section id="home" className="reveal--float">
+      <ScrollReveal />
+      <section id="home" data-reveal className="reveal--float">
         <Hero />
       </section>
-      <section id="about" className="reveal">
+      <section id="about" data-reveal className="reveal">
         <About />
       </section>
-      <section id="why-choose-us" className="reveal">
+      <section id="why-choose-us" data-reveal className="reveal">
         <WhyChooseUs />
       </section>
-      <section id="products" className="reveal">
+      <section id="products" data-reveal className="reveal">
         <Products />
       </section>
-      <section id="gallery" className="reveal">
+      <section id="gallery" data-reveal className="reveal">
         <Gallery />
       </section>
-      <section id="reviews" className="reveal">
+      <section id="reviews" data-reveal className="reveal">
         <Testimonials />
       </section>
-      <section id="contact" className="reveal">
+      <section id="contact" data-reveal className="reveal">
         <Contact />
       </section>
-      <section id="footer" className="reveal">
+      <section id="footer" data-reveal className="reveal">
         <Footer />
       </section>
     </>
@@ -41,3 +43,4 @@ const Home = () => {
 };
 
 export default Home;
+

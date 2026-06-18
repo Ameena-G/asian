@@ -20,14 +20,14 @@ const products = [
       "Angles, channels, beams and joists for fabrication.",
   },
   {
-    title: "GI & GP Sheets",
+    title: "CR Sheets",
     description:
-      "Galvanized sheets for industrial and home use.",
+      "Cold-rolled sheets for fabrication, manufacturing, and engineering applications.",
   },
   {
-    title: "Tata Structura",
+    title: "Section Steel",
     description:
-      "Authorized dealer for premium hollow sections.",
+      "Precision-engineered steel sections designed for strength and stability.",
   },
 ];
 
