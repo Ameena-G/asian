@@ -110,20 +110,26 @@ const Contact = () => {
 
             {/* Contact Info */}
             <div className="mt-14 space-y-8">
-              {/* Address */}
-              <div className="flex items-center gap-5">
-                <div className="w-16 h-16 rounded-xl bg-gray-100 flex items-center justify-center">
-                  <FaMapMarkerAlt className="text-black text-2xl" />
-                </div>
-                <div>
-                  <p className="uppercase tracking-[3px] text-sm text-gray-500">
-                    Address
-                  </p>
-                  <h4 className="text-black text-2xl">
-                    Davanagere, Karnataka, India
-                  </h4>
-                </div>
-              </div>
+              {/* Addresses */}
+<div className="flex items-start gap-5">
+  <div className="w-16 h-16 rounded-xl bg-gray-100 flex items-center justify-center">
+    <FaMapMarkerAlt className="text-black text-2xl" />
+  </div>
+
+  <div>
+    <p className="uppercase tracking-[3px] text-sm text-gray-500">
+      Addresses
+    </p>
+
+    <h4 className="text-black text-xl mt-1">
+      1: K R Road, Doggalli Compound, 2nd Cross, Davanagere, Karnataka, India
+    </h4>
+
+    <h4 className="text-black text-xl mt-3">
+      2: Chikkabudihal, Davanagere, Karnataka, India
+    </h4>
+  </div>
+</div>
 
               {/* Phone */}
               <div className="flex items-center gap-5">
@@ -135,7 +141,7 @@ const Contact = () => {
                     Phone
                   </p>
                   <h4 className="text-black text-2xl">
-                    Available on request
+                    +91 9008999444
                   </h4>
                 </div>
               </div>
@@ -150,7 +156,7 @@ const Contact = () => {
                     Email
                   </p>
                   <h4 className="text-black text-2xl break-all">
-                    info@asiansteelsdavanagere.com
+                    asiansteelsdvg@gmail.com
                   </h4>
                 </div>
               </div>

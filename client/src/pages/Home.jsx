@@ -14,7 +14,9 @@ const Home = () => {
     <>
       <Navbar />
       <ScrollReveal />
+
       <section id="home" data-reveal className="reveal--float">
+
         <Hero />
       </section>
       <section id="about" data-reveal className="reveal">

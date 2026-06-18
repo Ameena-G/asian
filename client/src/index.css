@@ -109,32 +109,18 @@ html {
   }
 }
 
-/* Utility class used for section/component entrance animations */
-/* Default: hidden until scrollReveal adds `reveal--scroll` */
+/* Base: components animate via Framer Motion (Reveal/RevealItem) */
 .reveal,
 .reveal--float {
-  opacity: 0;
-  transform: translateY(14px);
+  /* keep previous styling harmless */
 }
 
-/* When element is revealed by IntersectionObserver */
+/* IntersectionObserver toggle (kept for backward compatibility) */
 .reveal--scroll {
-  opacity: 1 !important;
-  transform: translateY(0) scale(1);
-  animation: scrollRevealIn 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  opacity: 1;
+  transform: none;
 }
 
-/* Utility class used for section/component entrance animations */
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  animation: fadeUp 700ms ease-out forwards;
-}
-
-.reveal--float {
-  opacity: 0;
-  animation: floatIn 900ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
-}
 
 /* Stagger children */
 .reveal .stagger {

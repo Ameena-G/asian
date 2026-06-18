@@ -18,9 +18,12 @@ export default function ScrollReveal() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          entry.target.classList.add("reveal--scroll");
-          observer.unobserve(entry.target);
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal--scroll");
+          } else {
+            // re-trigger when scrolling back up
+            entry.target.classList.remove("reveal--scroll");
+          }
         });
       },
       { threshold: 0.15 }

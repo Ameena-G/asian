@@ -1,3 +1,5 @@
+import { Reveal, RevealItem } from "./Reveal";
+
 const products = [
   {
     title: "MS Pipes",
@@ -25,15 +27,17 @@ const products = [
       "Cold-rolled sheets for fabrication, manufacturing, and engineering applications.",
   },
   {
-    title: "Section Steel",
+    title: "Wire Mesh Fencing",
     description:
-      "Precision-engineered steel sections designed for strength and stability.",
+      "Durable fencing solutions for secure boundaries and protection.",
   },
 ];
+
 
 const Products = () => {
   return (
     <section className="bg-[#081320] py-24 relative overflow-hidden">
+
 
       {/* Background Grid */}
 
@@ -55,29 +59,36 @@ const Products = () => {
 
           <div>
 
-            <p className="text-orange-500 uppercase tracking-[5px] font-semibold text-sm mb-4">
-              Products & Services
-            </p>
+            <RevealItem direction="up" delay={0.05}>
+              <p className="text-orange-500 uppercase tracking-[5px] font-semibold text-sm mb-4">
+                Products & Services
+              </p>
+            </RevealItem>
 
-            <h2
-              className="text-white text-[42px] md:text-[64px] font-black leading-none"
-              style={{
-                fontFamily: "Montserrat",
-              }}
-            >
-              Our Offerings
-            </h2>
+            <RevealItem direction="up" delay={0.12}>
+              <h2
+                className="text-white text-[42px] md:text-[64px] font-black leading-none"
+                style={{
+                  fontFamily: "Montserrat",
+                }}
+              >
+                Our Offerings
+              </h2>
+            </RevealItem>
 
           </div>
 
           <div className="flex items-center">
-            <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
-              A complete range of iron and steel materials sourced
-              from certified manufacturers and top brand partners.
-            </p>
+            <RevealItem direction="up" delay={0.18}>
+              <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
+                A complete range of iron and steel materials sourced
+                from certified manufacturers and top brand partners.
+              </p>
+            </RevealItem>
           </div>
 
         </div>
+
 
         {/* Content */}
 
@@ -85,63 +96,69 @@ const Products = () => {
 
           {/* Product Image */}
 
-          <div
-            className="
-              bg-white/5
-              backdrop-blur-sm
-              rounded-3xl
-              p-6
-              border
-              border-white/10
-            "
-          >
-            <img
-              src="/products-catalog.jpg"
-              alt="Products"
-              className="w-full h-full object-cover rounded-2xl"
-            />
-          </div>
+          <RevealItem direction="up" delay={0.08}>
+            <div
+              className="
+                bg-white/5
+                backdrop-blur-sm
+                rounded-3xl
+                p-6
+                border
+                border-white/10
+              "
+            >
+              <img
+                src="/products-catalog.jpg"
+                alt="Products"
+                className="w-full h-full object-cover rounded-2xl"
+              />
+            </div>
+          </RevealItem>
 
           {/* Product Cards */}
 
           <div className="grid md:grid-cols-2 gap-5">
-
             {products.map((product, index) => (
-              <div
+              <RevealItem
                 key={index}
-                className="
-                  bg-white/5
-                  backdrop-blur-sm
-                  border
-                  border-white/10
-                  rounded-2xl
-                  p-8
-                  hover:border-orange-500/30
-                  hover:-translate-y-1
-                  transition-all
-                  duration-300
-                "
+                direction="up"
+                delay={0.12 + index * 0.06}
               >
-                <h3
-                  className="text-white text-[20px] md:text-[24px] font-black mb-4"
-                  style={{
-                    fontFamily: "Montserrat",
-                  }}
+                <div
+                  className="
+                    bg-white/5
+                    backdrop-blur-sm
+                    border
+                    border-white/10
+                    rounded-2xl
+                    p-8
+                    hover:border-orange-500/30
+                    hover:-translate-y-1
+                    transition-all
+                    duration-300
+                  "
                 >
-                  {product.title}
-                </h3>
+                  <h3
+                    className="text-white text-[20px] md:text-[24px] font-black mb-4"
+                    style={{
+                      fontFamily: "Montserrat",
+                    }}
+                  >
+                    {product.title}
+                  </h3>
 
-                <p className="text-gray-300 text-lg leading-relaxed">
-                  {product.description}
-                </p>
+                  <p className="text-gray-300 text-lg leading-relaxed">
+                    {product.description}
+                  </p>
 
-                <div className="mt-8 h-[1px] bg-orange-500/60" />
-              </div>
+                  <div className="mt-8 h-[1px] bg-orange-500/60" />
+                </div>
+              </RevealItem>
             ))}
-
           </div>
 
         </div>
+
 
         {/* Moving Brands */}
 
@@ -151,7 +168,7 @@ const Products = () => {
 
     <div className="marquee-content">
 
-      <span>TATA STRUCTURA</span>
+      <span>APOLLO</span>
       <span>•</span>
 
       <span>JSW</span>
@@ -160,7 +177,7 @@ const Products = () => {
       <span>VIZAG STEEL</span>
       <span>•</span>
 
-      <span>SAIL</span>
+      <span>TATA</span>
       <span>•</span>
 
       <span>KAMDHENU</span>
@@ -169,7 +186,7 @@ const Products = () => {
       <span>JINDAL</span>
       <span>•</span>
 
-      <span>TATA STRUCTURA</span>
+      <span>APOLLO</span>
       <span>•</span>
 
       <span>JSW</span>
@@ -178,7 +195,7 @@ const Products = () => {
       <span>VIZAG STEEL</span>
       <span>•</span>
 
-      <span>SAIL</span>
+      <span>TATA</span>
       <span>•</span>
 
       <span>KAMDHENU</span>

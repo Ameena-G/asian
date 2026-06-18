@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Reveal, RevealItem } from "./Reveal";
 import {
   FaArrowRight,
   FaShieldAlt,
@@ -35,24 +36,26 @@ const Hero = () => {
 
             {/* Trusted Badge */}
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="
-                inline-flex
-                items-center
-                gap-3
-                border
-                border-white/20
-                bg-white/5
-                backdrop-blur-sm
-                rounded-full
-                px-7
-                py-3
-              "
-            >
-              <span className="w-2 h-2 rounded-full bg-orange-500" />
+            <RevealItem direction="up" delay={0.02}>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="
+                  inline-flex
+                  items-center
+                  gap-3
+                  border
+                  border-white/20
+                  bg-white/5
+                  backdrop-blur-sm
+                  rounded-full
+                  px-7
+                  py-3
+                "
+              >
+                <span className="w-2 h-2 rounded-full bg-orange-500" />
+
 
               <span
                 className="
@@ -65,7 +68,8 @@ const Hero = () => {
               >
                 Trusted Since 2007
               </span>
-            </motion.div>
+              </motion.div>
+            </RevealItem>
 
             {/* Main Heading */}
 

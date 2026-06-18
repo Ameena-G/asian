@@ -1,10 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FaPhoneAlt, FaBars, FaTimes } from "react-icons/fa";
 import logo from "../assets/logo.jpeg";
+
+const NAV_SECTIONS = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "products", label: "Products" },
+  { id: "gallery", label: "Gallery" },
+  { id: "reviews", label: "Reviews" },
+  { id: "contact", label: "Contact" },
+];
 
 const Navbar = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeId, setActiveId] = useState("home");
+
+  const activeLabel = useMemo(() => {
+    const found = NAV_SECTIONS.find((s) => s.id === activeId);
+    return found?.label ?? "Home";
+  }, [activeId]);
 
   useEffect(() => {
     const onScroll = () => {
@@ -17,6 +32,52 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const sectionEls = NAV_SECTIONS.map((s) => document.getElementById(s.id)).filter(Boolean);
+    if (!sectionEls.length) return;
+
+    // Navbar is fixed with height ~72px.
+    // rootMargin: move the top edge up so a section becomes active once it reaches under the navbar.
+
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0));
+
+        if (visible.length) {
+          setActiveId(visible[0].target.id);
+          return;
+        }
+
+        // Fallback: if nothing is intersecting (fast scroll edge cases), keep current.
+      },
+      {
+        root: null,
+        threshold: [0.15, 0.25, 0.35, 0.5, 0.65],
+        rootMargin: "-72px 0px -55% 0px",
+      }
+    );
+
+    sectionEls.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
+
+  const handleNavClick = (id) => (e) => {
+    e.preventDefault();
+    setActiveId(id);
+    setMobileMenu(false);
+
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
+  const linkBase = "relative font-semibold text-[18px] transition";
+
   return (
     <header
       id="site-navbar"
@@ -27,7 +88,8 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-[1320px] mx-auto px-6 lg:px-10">
-        <div className="h-[88px] flex items-center justify-between">
+        <div className="h-[72px] flex items-center justify-between">
+
 
           {/* Logo Section */}
 
@@ -63,60 +125,29 @@ const Navbar = () => {
           {/* Desktop Menu */}
 
           <nav className="hidden lg:flex items-center gap-12">
+            {NAV_SECTIONS.map((item) => {
+              const isActive = activeId === item.id;
+              const inactiveColor = isScrolled ? "text-[#0B1220]" : "text-white";
+              const activeColor = "text-[#F97316]";
 
-            <a
-              href="#home"
-              className="relative text-[#F97316] font-semibold text-[18px]"
-            >
-              Home
-              <span className="absolute left-0 -bottom-5 w-full h-[2px] bg-[#F97316]" />
-            </a>
-
-            <a
-              href="#about"
-              className={`font-semibold text-[18px] transition hover:text-[#F97316] ${
-                isScrolled ? "text-[#0B1220]" : "text-white"
-              }`}
-            >
-              About
-            </a>
-
-            <a
-              href="#products"
-              className={`font-semibold text-[18px] transition hover:text-[#F97316] ${
-                isScrolled ? "text-[#0B1220]" : "text-white"
-              }`}
-            >
-              Products
-            </a>
-
-            <a
-              href="#gallery"
-              className={`font-semibold text-[18px] transition hover:text-[#F97316] ${
-                isScrolled ? "text-[#0B1220]" : "text-white"
-              }`}
-            >
-              Gallery
-            </a>
-
-            <a
-              href="#reviews"
-              className={`font-semibold text-[18px] transition hover:text-[#F97316] ${
-                isScrolled ? "text-[#0B1220]" : "text-white"
-              }`}
-            >
-              Reviews
-            </a>
-
-            <a
-              href="#contact"
-              className={`font-semibold text-[18px] transition hover:text-[#F97316] ${
-                isScrolled ? "text-[#0B1220]" : "text-white"
-              }`}
-            >
-              Contact
-            </a>
-
+              return (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={handleNavClick(item.id)}
+                  className={`${linkBase} ${
+                    isActive
+                      ? `${activeColor} font-semibold`
+                      : `font-semibold ${inactiveColor} hover:text-[#F97316]`
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="absolute left-0 -bottom-5 w-full h-[2px] bg-[#F97316]" />
+                  )}
+                </a>
+              );
+            })}
           </nav>
 
           {/* Desktop Button */}
@@ -154,58 +185,34 @@ const Navbar = () => {
       >
         <div className="px-6 py-6 flex flex-col gap-5">
 
-          <a
-            href="#home"
-            className="text-white"
-            onClick={() => setMobileMenu(false)}
-          >
-            Home
-          </a>
-
-          <a
-            href="#about"
-            className="text-white"
-            onClick={() => setMobileMenu(false)}
-          >
-            About
-          </a>
-
-          <a
-            href="#products"
-            className="text-white"
-            onClick={() => setMobileMenu(false)}
-          >
-            Products
-          </a>
-
-          <a
-            href="#gallery"
-            className="text-white"
-            onClick={() => setMobileMenu(false)}
-          >
-            Gallery
-          </a>
-
-          <a
-            href="#reviews"
-            className="text-white"
-            onClick={() => setMobileMenu(false)}
-          >
-            Reviews
-          </a>
-
-          <a
-            href="#contact"
-            className="text-white"
-            onClick={() => setMobileMenu(false)}
-          >
-            Contact
-          </a>
+          {NAV_SECTIONS.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              onClick={(e) => {
+                handleNavClick(item.id)(e);
+                setMobileMenu(false);
+              }}
+              className={`relative ${
+                activeId === item.id
+                  ? "text-[#F97316]"
+                  : "text-white"
+              } font-semibold`}
+            >
+              {item.label}
+              {activeId === item.id && (
+                <span className="absolute left-0 -bottom-5 w-full h-[2px] bg-[#F97316]" />
+              )}
+            </a>
+          ))}
 
           <a
             href="#contact"
             className="bg-[#F97316] py-3 rounded-lg text-white text-center font-semibold"
-            onClick={() => setMobileMenu(false)}
+            onClick={(e) => {
+              handleNavClick("contact")(e);
+              setMobileMenu(false);
+            }}
           >
             Get Quote
           </a>

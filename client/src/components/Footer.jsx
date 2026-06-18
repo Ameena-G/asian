@@ -110,11 +110,11 @@ const Footer = () => {
 
             <ul className="space-y-4 text-gray-300 text-lg">
 
-              <li>Tata Structura</li>
+              <li>Apollo</li>
               <li>JSW</li>
               <li>Vizag Steel</li>
-              <li>SAIL</li>
               <li>Jindal</li>
+              <li>Kamdhenu</li>
 
             </ul>
 
