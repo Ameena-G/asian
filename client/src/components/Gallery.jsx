@@ -1,5 +1,6 @@
 import img1 from "../assets/img1.jpeg";
-import img2 from "../assets/img2.jpeg";
+import img3 from "../assets/img3.png";
+import img4 from "../assets/img4.jpeg";
 import { Reveal, RevealItem } from "./Reveal";
 
 const Gallery = () => {
@@ -82,7 +83,7 @@ const Gallery = () => {
               "
             >
               <img
-                src={img2}
+                src={img3}
                 alt="Gallery 2"
                 className="w-full h-full object-cover"
               />
@@ -104,7 +105,11 @@ const Gallery = () => {
                 shadow-lg
               "
             >
-              {/* Replace with image */}
+              <img
+                src={img4}
+                alt="Gallery 3"
+                className="w-full h-full object-cover"
+              />
             </div>
           </RevealItem>
 

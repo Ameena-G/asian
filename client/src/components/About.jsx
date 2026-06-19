@@ -1,3 +1,4 @@
+import img2 from "../assets/img2.jpeg";
 import { FaCheckCircle } from "react-icons/fa";
 import { Reveal, RevealItem } from "./Reveal";
 
@@ -40,7 +41,7 @@ const About = () => {
                 delay={0.18}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200"
+                  src={img2}
                   alt="Asian Steels"
                   className="rounded-2xl w-full h-[500px] object-cover"
                 />
