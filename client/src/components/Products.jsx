@@ -1,4 +1,5 @@
 import { Reveal, RevealItem } from "./Reveal";
+import broc from "../assets/broc.jpeg";
 
 const products = [
   {
@@ -33,14 +34,10 @@ const products = [
   },
 ];
 
-
 const Products = () => {
   return (
     <section className="bg-[#081320] py-24 relative overflow-hidden">
-
-
       {/* Background Grid */}
-
       <div
         className="
           absolute
@@ -52,13 +49,9 @@ const Products = () => {
       />
 
       <div className="max-w-[1320px] mx-auto px-6 lg:px-8 relative z-10">
-
         {/* Header */}
-
         <div className="grid lg:grid-cols-2 gap-10 mb-16">
-
           <div>
-
             <RevealItem direction="up" delay={0.05}>
               <p className="text-orange-500 uppercase tracking-[5px] font-semibold text-sm mb-4">
                 Products & Services
@@ -75,27 +68,21 @@ const Products = () => {
                 Our Offerings
               </h2>
             </RevealItem>
-
           </div>
 
           <div className="flex items-center">
             <RevealItem direction="up" delay={0.18}>
               <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
-                A complete range of iron and steel materials sourced
-                from certified manufacturers and top brand partners.
+                A complete range of iron and steel materials sourced from
+                certified manufacturers and top brand partners.
               </p>
             </RevealItem>
           </div>
-
         </div>
 
-
         {/* Content */}
-
         <div className="grid lg:grid-cols-[1fr_1.4fr] gap-10">
-
           {/* Product Image */}
-
           <RevealItem direction="up" delay={0.08}>
             <div
               className="
@@ -108,7 +95,7 @@ const Products = () => {
               "
             >
               <img
-                src="/products-catalog.jpg"
+                src={broc}
                 alt="Products"
                 className="w-full h-full object-cover rounded-2xl"
               />
@@ -116,7 +103,6 @@ const Products = () => {
           </RevealItem>
 
           {/* Product Cards */}
-
           <div className="grid md:grid-cols-2 gap-5">
             {products.map((product, index) => (
               <RevealItem
@@ -156,62 +142,51 @@ const Products = () => {
               </RevealItem>
             ))}
           </div>
-
         </div>
 
-
         {/* Moving Brands */}
+        <div className="mt-20 overflow-hidden border-y border-white/10 py-8">
+          <div className="marquee">
+            <div className="marquee-content">
+              <span>APOLLO</span>
+              <span>•</span>
 
-<div className="mt-20 overflow-hidden border-y border-white/10 py-8">
+              <span>JSW</span>
+              <span>•</span>
 
-  <div className="marquee">
+              <span>VIZAG STEEL</span>
+              <span>•</span>
 
-    <div className="marquee-content">
+              <span>TATA</span>
+              <span>•</span>
 
-      <span>APOLLO</span>
-      <span>•</span>
+              <span>KAMDHENU</span>
+              <span>•</span>
 
-      <span>JSW</span>
-      <span>•</span>
+              <span>JINDAL</span>
+              <span>•</span>
 
-      <span>VIZAG STEEL</span>
-      <span>•</span>
+              <span>APOLLO</span>
+              <span>•</span>
 
-      <span>TATA</span>
-      <span>•</span>
+              <span>JSW</span>
+              <span>•</span>
 
-      <span>KAMDHENU</span>
-      <span>•</span>
+              <span>VIZAG STEEL</span>
+              <span>•</span>
 
-      <span>JINDAL</span>
-      <span>•</span>
+              <span>TATA</span>
+              <span>•</span>
 
-      <span>APOLLO</span>
-      <span>•</span>
+              <span>KAMDHENU</span>
+              <span>•</span>
 
-      <span>JSW</span>
-      <span>•</span>
-
-      <span>VIZAG STEEL</span>
-      <span>•</span>
-
-      <span>TATA</span>
-      <span>•</span>
-
-      <span>KAMDHENU</span>
-      <span>•</span>
-
-      <span>JINDAL</span>
-      <span>•</span>
-
-    </div>
-
-  </div>
-
-</div>
-
+              <span>JINDAL</span>
+              <span>•</span>
+            </div>
+          </div>
+        </div>
       </div>
-
     </section>
   );
 };

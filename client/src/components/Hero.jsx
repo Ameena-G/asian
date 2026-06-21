@@ -139,6 +139,11 @@ const Hero = () => {
               className="flex flex-wrap gap-5 mt-12"
             >
               <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById("contact");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
                 className="
                   bg-[#F97316]
                   hover:bg-[#EA580C]
@@ -160,6 +165,11 @@ const Hero = () => {
               </button>
 
               <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById("products");
+                  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                }}
                 className="
                   border
                   border-white/20
